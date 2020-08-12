@@ -2,14 +2,20 @@
 echo Welcome To Employee Wage problem.
 
 isPresent=1
-wagePerHours=20
-
 attendanceCheck=$((RANDOM%2))
+randomValue=$((RANDOM%2))
+fullTime=1
+wagePerHour=20
 if (( attendanceCheck == isPresent ))
 then
-	echo Employee is Present
-	empHrs=8
-	totalWage=$(($wagePerHours*$empHrs))
+	if (( randomValue == fullTime ))
+	then
+		totalWage=$((wagePerHour*8))
+		echo "Employee is present and his daily wage is $totalWage"
+	else
+		partimeWage=$((wagePerHour*4))
+		echo "Employee is present and he works part time and his daily wage is $partimeWage"
+	fi
 else
 	echo Employee is Absent
 fi
