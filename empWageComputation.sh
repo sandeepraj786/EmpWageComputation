@@ -1,30 +1,31 @@
 #!/bin/bash -x
 echo Welcome To Employee Wage problem.
 
-#!/bin/bash -x
-isPartTime=1
-isFullTime=2
+WAGEPERHOUR=20
+HOURCONDITION=100
+MONTH=20
 
-empRatePerHrs=20
-noOfWorkingDays=20
-totalSal=0
+day=0
+hour=0
 
-for ((day=1;day<$noOfWorkingDays;day++))
+while(( day<=MONTH && hour<=HOURCONDITION))
 do
-        empCheck=$((RANDOM%3))
-
-        case $empCheck in
-                $isPartTime)
-                        empHrs=4 ;;
-                $isFullTime)
-                        empHrs=8 ;;
-                *)
-                        empHrs=0 ;;
-        esac
-
-        sal=$(($empHrs*empRatePerHrs))
-        totalSal=$(($totalSal+$sal))
+	randomValue=$((RANDOM%3))
+	((day++))
+	case $randomValue in
+		1)
+			workingHour=8
+		;;
+		2)
+			workingHour=4
+		;;
+		*)
+			workingHour=0
+		;;
+	esac
+	hour=$((hour+workingHour))
 done
-echo $totalSal
 
-
+#Printing the total salary.
+salary=$(($WAGEPERHOUR*$hour))
+echo "Total Salary will be: $salary"
