@@ -4,7 +4,7 @@ echo Welcome To Employee Wage problem.
 WAGEPERHOUR=20
 HOURCONDITION=100
 MONTH=20
-day=0
+day=1
 hour=0
 
 function workHour() {
@@ -26,7 +26,7 @@ function dailyWage() {
 	dailyIncome=$(($timeHour*$WAGEPERHOUR))
 	echo $dailyIncome
 }
-while(( day<MONTH && hour<HOURCONDITION ))
+while(( day<=MONTH && hour<HOURCONDITION ))
 do
 	randomValue=$((RANDOM%3))
 	emphour=$(workHour $randomValue)
@@ -35,7 +35,7 @@ do
 	((day++))
 done
 
-#Printing the total salary.
 salary=$(($WAGEPERHOUR*$hour))
 	echo "Total Salary will be: $salary"
 	echo "Daily income: ${wageArray[@]}"
+	echo "Days: ${!wageArray[@]}"
